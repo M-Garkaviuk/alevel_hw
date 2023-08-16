@@ -185,6 +185,7 @@ class King(ChessPiece):
 pawn = Pawn('white', (0, 0))
 knight = Knight('white', (0, 0))
 bishop = Bishop('black', (0, 0))
+queen = Queen('white', (0, 0))
 
 
 print(pawn.is_valid_move((0, 1)))
