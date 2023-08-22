@@ -21,6 +21,7 @@ class Student(Person):
     def get_full_name_and_id(self):
         return f'{self.get_full_name()}, ID: {self.student_id}'
 
+
 class Teacher(Person):
     def __init__(self, employee_id, *args):
         self.employee_id = employee_id
@@ -28,43 +29,60 @@ class Teacher(Person):
 
     def teach(self):
         return f'Вчитель {self.first_name} надає урок у свої'\
-      f'{self.age} років, його призвіще {self.last_name}'
+            f' {self.age} років, його призвіще {self.last_name}'
 
-class Employee(Person):
+class Employee:
     def __init__(self,
-                daily_salary: float,
-                *args
-                ):
+                full_name: str,
+                daily_salary: float
+                 ):
+        self.full_name = full_name
         self.daily_salary = daily_salary
-        super().__init__(*args)
+
+    def __gt__(self, other):
+        return self.daily_salary > other.daily_salary
+
+    def __lt__(self, other):
+        return self.daily_salary < other.daily_salary
+
+    def __eq__(self, other):
+        return self.daily_salary == other.daily_salary
+
+    def __ne__(self, other):
+        return self.daily_salary != other.daily_salary
 
     def work(self):
-        return f'Here is {self.first_name}. I came to work'
+        return f'Here is {self.full_name}. I came to work'
     
 class Recruiter(Employee):
-    def __init__(self, *args):
-        super().__init__(*args)
     def __str__(self):
-        return f'{self.get_full_name} is a Recruiter'
+        return f'{self.full_name} is a Recruiter'
+
     def work(self):
         return f'I come to the office and start to hiring.'
 
 class Developer(Employee):
-    def __init__(self, *args):
-        super().__init__(*args)
     def __str__(self):
-        return f'{self.get_full_name} is a Developer'
+        return f'{self.full_name} is a Developer'
+
     def work(self):
         return f'I come to the office and start to coding.'
 
 
-lena = Recruiter(15.50, 'Olena', 'Osipova', 26)
+lena = Recruiter('Olena Osipova', 15.50)
+korney = Developer('Korney Baklan', 24.53)
 print(lena.work())
-print(lena.str())
+print(str(lena))
+print(korney.work())
+print(str(korney))
+print(lena > korney)
+print(lena < korney)
+print(lena == korney)
 
 
-anatoliy = Person('Dima','Golova',18)
+
+anatoliy = Person('Dima', 'Golova', 18)
 print(anatoliy.get_full_name())
-sasha = Teacher('Sasha','Borisov',99,1)
+sasha = Teacher('Sasha', 'Borisov', 99, 1)
 print(sasha.teach())
 print(sasha.get_full_name())
