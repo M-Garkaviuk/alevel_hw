@@ -31,6 +31,7 @@ class Teacher(Person):
         return f'Вчитель {self.first_name} надає урок у свої'\
             f' {self.age} років, його призвіще {self.last_name}'
 
+
 class Employee:
     def __init__(self,
                 full_name: str,
@@ -53,13 +54,15 @@ class Employee:
 
     def work(self):
         return f'Here is {self.full_name}. I came to work'
-    
+
+
 class Recruiter(Employee):
     def __str__(self):
         return f'{self.full_name} is a Recruiter'
 
     def work(self):
         return f'I come to the office and start to hiring.'
+
 
 class Developer(Employee):
     def __str__(self):
