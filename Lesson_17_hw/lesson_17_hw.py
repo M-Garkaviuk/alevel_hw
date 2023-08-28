@@ -83,16 +83,25 @@ class Developer(Employee):
     def work(self, hours_worked: float):
         return f'I come to the office and start to coding.'
 
-    def compare_number_of_tech(self, other_developer):
-        self_tech_count = len(self.tech_stack)
-        other_tech_count = len(other_developer.tech_stack)
+     def __gt__(self, other):
+        len(self.tech_stack) < len(other.tech_stack)
 
-        if self_tech_count > other_tech_count:
-            return f'{self.full_name} knows more technologies than {other_developer.full_name}'
-        elif self_tech_count < other_tech_count:
-            return f'{other_developer.full_name} knows more technologies than {self.full_name}'
-        else:
-            return f'Both developers know the same number of technologies'
+    def __lt__(self, other):
+        return len(self.tech_stack) < len(other.tech_stack)
+
+    def __eq__(self, other):
+        return len(self.tech_stack) == len(other.tech_stack)
+
+    # def compare_number_of_tech(self, other_developer):
+    #     self_tech_count = len(self.tech_stack)
+    #     other_tech_count = len(other_developer.tech_stack)
+
+    #     if self_tech_count > other_tech_count:
+    #         return f'{self.full_name} knows more technologies than {other_developer.full_name}'
+    #     elif self_tech_count < other_tech_count:
+    #         return f'{other_developer.full_name} knows more technologies than {self.full_name}'
+    #     else:
+    #         return f'Both developers know the same number of technologies'
 
     def __add__(self, other_developer):
         new_name = f'{self.full_name} {other_developer.full_name}'
