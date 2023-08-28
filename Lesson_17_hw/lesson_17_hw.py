@@ -7,31 +7,39 @@ class EmailAlreadyExistsException(ValueError):
     pass
 
 
+class Logger:
+    @staticmethod
+    def write_log():
+        with open('logs.txt', 'w') as log_file:
+            now = datetime.datetime.now()
+            traceback_info = traceback.format_exc()
+            log_entry = f'{now} | {traceback_info}\n'
+            log_file.write(log_entry)
+
+class EmailValidator:
+    @staticmethod
+    def validate_email(email):
+        with open('emails.csv', 'r') as f:
+            if email in f.read().splitlines():
+                raise EmailAlreadyExistsException(f'Email {email} is already used!')
+
+
 class Employee:
     def __init__(self, full_name: str, daily_salary: float, email: str):
         self.full_name = full_name
         self.daily_salary = daily_salary
+        self.email = email
+        self.set_email()
+
+
+    def set_email(self):
         try:
-            self.validate_email(email)
-        except EmailAlreadyExistsException:
-            with open('logs.txt', 'w') as log_file:
-                now = datetime.datetime.now()
-                traceback_info = traceback.format_exc()
-                log_entry = f'{now} | {traceback_info}\n'
-                log_file.write(log_entry)
+            EmailValidator.validate_email(self.email)
+        except EmailAlreadyExistsException as e:
+            Logger.write_log()
         else:
-            self.email = email
-            self.save_email()
-
-    def save_email(self):
-        with open('emails.csv', 'a') as f:
-            f.write(f'{self.email}\n')
-
-    def validate_email(self, email):
-        with open('emails.csv', 'r') as f:
-            if email in f.read().splitlines():
-                raise EmailAlreadyExistsException(f'Email {email} is already used!')
-            return email
+            with open('emails.csv', 'a') as f:
+                f.write(f'{self.email}\n')
 
     def __gt__(self, other):
         return self.daily_salary > other.daily_salary
@@ -105,7 +113,7 @@ def get_work_days_in_month(year, month):
     return work_days
 
 
-lena = Recruiter('Olena Osipova', 15.50, 'dsfasdv')
+lena = Recruiter('Olena Osipova', 15.50, 'dsfasdv@fberh')
 
 current_date = datetime.date.today()
 work_days_this_month = get_work_days_in_month(current_date.year, current_date.month)
