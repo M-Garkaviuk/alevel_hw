@@ -1,0 +1,54 @@
+/*Создать цикл на 10 итераций. На каждой итерации если i четное, то вывести в консоль слово Fiz,
+если i не четное, то вывести в консоль слово Buz, если i кротное цифре 3, то вывести FizBuz.*/
+
+for (let i = 1; i <= 10; i++) {
+  if (i % 3 === 0) {
+    console.log(`FizzBuzz`);
+  } else if (i % 2 === 0) {
+    console.log(`Fizz`);
+  } else {
+    console.log(`Buzz`);
+  }
+}
+
+
+/*Написать логику нахождения факториала числа 10.
+Формула нахождения факториала числа 7
+7! = 7⋅6⋅5⋅4⋅3⋅2⋅1 = 5040.*/
+
+function factorial(num){
+  res = 1
+  for (let i = num; i >= 2; i--){
+      res *= i;
+    } return res
+  } 
+
+console.log(factorial(7));
+
+/*В пачке бумаги 500 листов. За неделю в офисе расходуется 1200 листов. Какое наименьшее количество пачек бумаги нужно купить в офис на 8 недель?
+Запрещавется использовать какое-либо округление (Math.ceil, Math.floor, ~~, parseInt).
+const sheetsInReamPaper = 500;
+const consumptionPerWeek = 1200;
+const weeksAmount = 8;*/
+
+const sheetsInReamPaper = 500;
+const consumptionPerWeek = 1200;
+const weeksAmount = 8;
+
+function packsNeeded(sheetsInReamPaper, consumptionPerWeek, weeksAmount) {
+  const totalSheetsNeeded = consumptionPerWeek * weeksAmount;
+  let packsNeeded = 0;
+  let uncovered = totalSheetsNeeded;
+
+  while (uncovered > 0) {
+    uncovered -= sheetsInReamPaper;
+    packsNeeded++;
+  }
+
+  return packsNeeded;
+}
+
+const result = packsNeeded(sheetsInReamPaper, consumptionPerWeek, weeksAmount);
+console.log(result);
+
+
