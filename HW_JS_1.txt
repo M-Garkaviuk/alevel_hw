@@ -31,7 +31,8 @@ const sheetsInReamPaper = 500;
 const consumptionPerWeek = 1200;
 const weeksAmount = 8;*/
 
-const sheetsInReamPaper = 500;
+const sheetsInReamPaper = 500, consumptionPerWeek = 1200, const weeksAmount = 8
+
 const consumptionPerWeek = 1200;
 const weeksAmount = 8;
 
@@ -51,4 +52,21 @@ function packsNeeded(sheetsInReamPaper, consumptionPerWeek, weeksAmount) {
 const result = packsNeeded(sheetsInReamPaper, consumptionPerWeek, weeksAmount);
 console.log(result);
 
+for (;packsNeeded * sheetsInReamPaper < consumptionPerWeek * weeksAmount; packsNeeded++) {
+
+};
+packsNeeded
+
+
+const medianNumber = 8;
+
+for (let i = 0; i < medianNumber; i++) {
+  let dashes = '';
+  let krosses = '';
+  for (j = 0; j < medianNumber - i - 1; j++) dashes += "-";
+  for (j = 0; j < 2 * i + 1; j++) krosses += "#";
+  
+    
+   console.log(dashes + krosses + dashes);
+};
 
