@@ -1,0 +1,80 @@
+
+const citiesAndCountries = {
+	'Киев': 'Украина',
+	'Нью-Йорк': 'США',
+	'Амстердам': 'Нидерланды',
+	'Берлин': 'Германия',
+	'Париж': 'Франция',
+	'Лиссабон': 'Португалия',
+	'Вена': 'Австрия',
+};
+
+for (i in citiesAndCountries)
+console.log(`${i} - это ${citiesAndCountries[i]}`);
+
+const amount = 9;
+
+
+
+function getArray() {
+  let res = [];
+  for (let i = 0; i < amount / 3; i++) {
+    res.push([1, 2, 3].map(item => item + i * 3));
+  }
+  return res;
+}
+
+console.log(getArray());
+
+
+
+
+const namesOfDays = {
+    ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+    en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+}
+
+function getNameOfDay(){
+    const lang = 'en';
+    const day = 7;
+
+	if (lang === 'en'){
+		return namesOfDays[lang][day - 1];
+	}
+    else {
+		return namesOfDays[lang][day - 1];
+	}
+    
+}
+
+
+const arr = [5, 5, 899, 900];
+
+function sumTwoSmallest(arr) {
+  let minValues = arr.filter((a,b) => a - b);
+    return minValues[0] + minValues[1]
+  };
+  
+  console.log(sumTwoSmallest(arr));
+
+
+let arr = [1, 0, 0, 0, 1];
+
+function convertToInt(arr) {
+  return arr.reverse().reduce((acc, item, index) => {
+    acc += item * Math.pow(2, index);
+    return acc;
+  }, 0);
+}
+
+console.log(convertToInt(arr));
+
+
+
+
+
+
+
+
+
+
