@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My JavaScript Page</title>
+</head>
+<script>
+    fetch('./employeeArr.js')
+      .then(response => response.json()) 
+      .then(employeeArr => {
+    console.log(employeeArr);
+      })
+      .catch(error => console.error('Ошибка загрузки данных:', error));
+</script>
+<body>
+    <h1>My JavaScript Page</h1>
+    <script src="hwjs3.js"></script>
+</body>
+</html>
