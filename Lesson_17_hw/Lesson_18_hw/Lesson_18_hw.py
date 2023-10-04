@@ -34,7 +34,7 @@ class Candidate:
 
                 full_name, email, tech_stack, main_skill, main_skill_grade = row
                 first_name, last_name = full_name.split()
-                tech_stack = tech_stack.split(';')
+                tech_stack = tech_stack.split('|')
                 candidate = cls(first_name, last_name, email, tech_stack, main_skill, main_skill_grade)
                 candidates.append(candidate)
 
